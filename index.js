@@ -48,6 +48,18 @@ else {
     res.json({ msg: "HOLA" })
   })
 
+  app.get('/suma', (req, res) => {
+    const p1 = req.query.p1;
+    const p2 = req.query.p2;
+
+    if(!p1 || !p2)
+      res.status(400).json({msg:"Pasamos los parametros"});
+
+    const output = Number(p1) + Number(p2);
+
+    res.status(200).json({out:output});
+  })
+
   app.get('/primo', (req, res) => {
     const primes = []
     const max = Number(req.query.max) || 1000
